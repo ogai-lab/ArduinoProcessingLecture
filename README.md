@@ -1,1 +1,2 @@
 # ArduinoProcessingLecture
+ArduinoとProcessingを用いた講義の資料です。
