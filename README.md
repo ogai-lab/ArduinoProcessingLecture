@@ -1,12 +1,16 @@
 # ArduinoProcessingLecture
 
-ArduinoとProcessingを用いた講義の資料。
-
 URL: https://github.com/ogai-lab/ArduinoProcessingLecture
 
+ArduinoとProcessingを用いた講義の資料。
 
-# はじめに
+2022年3月26日の東京工芸大学工学部機械コース体験授業では以下の内容で行う。
 
+タイトル:
+PCとマイコンボードによるサーボモータの制御
+
+概要:
+PCからの様々な入力により、マイコンボードArduinoを通して小型サーボモータを制御する方法について体験します。またサーボモータやマイコンの、社会や研究での利用場面や応用可能性について学びます。
 
 # 使用するもの
 
@@ -152,30 +156,53 @@ https://ja.wikipedia.org/wiki/Processing
 ## Arduinoドローンの例
 
 Arduino Drone With GPS
-
 https://www.instructables.com/Arduino-Drone-With-GPS/
 
 ## 二足歩行ロボットキットの例
 
 近藤科学 KHR-3HV
-
 https://www.vstone.co.jp/robotshop/index.php?main_page=index&cPath=70_117
 
 ## 顔の表情を生成するロボットの研究例
 
 "Facially expressive humanoid robotic face",
 Zanwar Faraj, Mert Selamet, Carlos Morales, Maimuna Hossain, Boyuan Chen, Hod Lipson, HardwareX, Volume 9, E00117, April 1, 2021
-
 https://www.hardware-x.com/article/S2468-0672(20)30026-2/fulltext
 
+# 今後の学習のために
 
-# まとめ
+## 参考書
+
+Arduinoをはじめよう 第2版
+https://www.oreilly.co.jp/books/9784873115375/
+
+Processingをはじめよう 第2版
+https://www.oreilly.co.jp/books/9784873117737/
 
 
-# 今後足すとよいもの
+## 追加部品案
 
-## ブレッドボード
+### Arduinoをはじめようキット
 
-## スイッチボタン
+https://www.switch-science.com/catalog/181/
 
-## DCモータ
+Arduinoは互換機をそのまま使えるので、以下のような必要そうな部品だけ別に購入してもよい。
+
+- ブレッドボード
+- スイッチボタン
+- ジャンパ線、等々
+
+### DCモータ、ギアボックス
+
+ブライテンベルグビークルというロボットをArduinoで実装した例。
+
+![BraitenbergVehicleTop](/images/BraitenbergVehicleTop.jpg)
+
+![BraitenbergVehicleBottom](/images/BraitenbergVehicleBottom.jpg)
+
+モータ
+タミヤ ダブルギヤボックス
+https://www.tamiya.com/japan/products/70168/index.html
+
+Arduino用モータードライバシールド「Ardumoto」
+https://www.switch-science.com/catalog/3262/
