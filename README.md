@@ -136,6 +136,10 @@ https://ja.wikipedia.org/wiki/Processing
 
 左上の三角マークのボタンを押すと実行され、ウィンドウが表示される。
 
+Videoライブラリなどを追加インストールすることで、カメラなども使うことができる。
+Slit Scanの例。
+https://www.youtube.com/watch?v=WCJM9WIoudI
+
 ## Processingでのマイク動作テスト
 
 サンプルプログラムはメニューの以下にあるので、動かしてみよう。
@@ -147,22 +151,49 @@ https://ja.wikipedia.org/wiki/Processing
 
 # Arduino+Processing
 
-## Processingからのキーボード入力でサーボモータを動かす
+## Processingからのキーボード入力により、Arduinoがサーボモータを動かす
 
-キーボード入力によってサーボモータの動きが変わるのを確かめよう。
+PCのキーボード入力をProcessingが受け取り、シリアル通信によってArduinoに送る。
+Arduinoは受け取ったデータを元にサーボモータを動かす。
 
-開発中。
+- Arduino用プログラム [/Arduino/SerialByteServo/SerialByteServo.ino](/Arduino/SerialByteServo/SerialByteServo.ino)
+- Processing用プログラム [/Processing/KeyLRByte2Serial/KeyLRByte2Serial.pde](/Processing/KeyLRByte2Serial/KeyLRByte2Serial.pde)
+
+Processing用プログラムのSerial.list()[]の数値を変える必要があるかもしれない。
+
+lキー(left)とrキー(right)を押すと、サーボモータを動かすことができる。
+speedの値を変えたりして挙動を確かめよう。
+
+## Processingからのマウス入力により、Arduinoがサーボモータを動かす
+
+PCのマウス入力をProcessingが受け取り、シリアル通信によってArduinoに送る。
+Arduinoは受け取ったデータを元にサーボモータを動かす。
+
+- Arduino用プログラムはキーボード入力のものと同じ。
+- Processing用プログラム [/Processing/MouseXByte2Serial/MouseXByte2Serial.pde](/Processing/MouseXByte2Serial/MouseXByte2Serial.pde)
+
+Processingで起動したウィンドウ上のマウスの横方向の位置により、サーボモータを動かすことができる。
+
 ## マイク入力でモータを動かす
 
-マイク入力によってサーボモータの動きが変わるのを確かめよう。
+PCのマイク入力をProcessingが受け取り、シリアル通信によってArduinoに送る。
+Arduinoは受け取ったデータを元にサーボモータを動かす。
 
-開発中。
+- Arduino用プログラムはキーボード入力のものと同じ。
+- Processing用プログラム [/Processing/MicrophoneByte2Serial/MicrophoneByte2Serial.pde](/Processing/MicrophoneByte2Serial/MicrophoneByte2Serial.pde)
+
+マイク入力の大きさにより、サーボモータを動かすことができる。
+VolumeMaxの値などを変えて挙動を確かめよう。
+
+<!--
 ## カメラ入力でモータを動かす
 
 カメラ入力によってサーボモータの動きが変わるのを確かめよう。
 講師によるデモ。
 
 開発中。しないかも。
+
+-->
 
 # マイコンとサーボモータの応用場面
 
