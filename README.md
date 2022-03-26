@@ -253,6 +253,11 @@ https://qiita.com/ogailab/items/390ac4cb290b5b0802da
 
 # その他
 
+## 2022年3月26日の授業用ファイル置き場
+
+Delivery(V:)以下のV:\common\arduino_test\以下に諸々置いてある。
+学生アシスタントはその中のreadme.txtを読み指示に従うこと。
+
 ## ProcessingのProxy設定
 
 東京工芸大学内ではProxyの設定をしないとProcessingが使用できない。
