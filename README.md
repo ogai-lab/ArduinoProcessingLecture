@@ -151,7 +151,7 @@ https://www.youtube.com/watch?v=WCJM9WIoudI
 
 # Arduino+Processing
 
-## Processingからのキーボード入力により、Arduinoがサーボモータを動かす
+## Processingからのキーボード入力により、Arduinoでサーボモータを動かす
 
 PCのキーボード入力をProcessingが受け取り、シリアル通信によってArduinoに送る。
 Arduinoは受け取ったデータを元にサーボモータを動かす。
@@ -164,7 +164,7 @@ Processing用プログラムのSerial.list()[]の数値を変える必要があ�
 lキー(left)とrキー(right)を押すと、サーボモータを動かすことができる。
 speedの値を変えたりして挙動を確かめよう。
 
-## Processingからのマウス入力により、Arduinoがサーボモータを動かす
+## Processingからのマウス入力により、Arduinoでサーボモータを動かす
 
 PCのマウス入力をProcessingが受け取り、シリアル通信によってArduinoに送る。
 Arduinoは受け取ったデータを元にサーボモータを動かす。
@@ -174,7 +174,7 @@ Arduinoは受け取ったデータを元にサーボモータを動かす。
 
 Processingで起動したウィンドウ上のマウスの横方向の位置により、サーボモータを動かすことができる。
 
-## マイク入力でモータを動かす
+## Processingからのマイク入力により、Arduinoでサーボモータを動かす
 
 PCのマイク入力をProcessingが受け取り、シリアル通信によってArduinoに送る。
 Arduinoは受け取ったデータを元にサーボモータを動かす。
@@ -255,7 +255,7 @@ https://qiita.com/ogailab/items/390ac4cb290b5b0802da
 
 ## 2022年3月26日の授業用ファイル置き場
 
-Delivery(V:)以下のV:\common\arduino_test\以下に諸々置いてある。
+東京工芸大学PC演習室のPCのDelivery(V:)以下のV:\common\arduino_test\以下に諸々置いてある。
 学生アシスタントはその中のreadme.txtを読み指示に従うこと。
 
 ## ProcessingのProxy設定
