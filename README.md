@@ -241,7 +241,7 @@ https://qiita.com/ogailab/items/390ac4cb290b5b0802da
 
 ### DCモータ、ギアボックス
 
-ブライテンベルグビークルというロボットをArduinoで実装した例。
+ブライテンベルグビークル(Braitenberg Vehicle)というロボットをArduinoで実装した例。
 
 ![BraitenbergVehicleTop](/images/BraitenbergVehicleTop.jpg)
 
