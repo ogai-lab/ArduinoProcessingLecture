@@ -4,7 +4,7 @@ URL: https://github.com/ogai-lab/ArduinoProcessingLecture
 
 ArduinoとProcessingを用いた講義の資料。
 
-2022年7月17日の東京工芸大学工学部機械コース体験授業では以下の内容で行う。
+2022年夏の東京工芸大学工学部機械コース体験授業では以下の内容で行う。
 
 - タイトル：PCとマイコンボードによるサーボモータの制御
 - 概要：PCからの様々な入力により、マイコンボードArduinoを通して小型サーボモータを制御する方法について体験します。またサーボモータやマイコンの、社会や研究での利用場面や応用可能性について学びます。
@@ -23,7 +23,7 @@ ArduinoとProcessingを用いた講義の資料。
 
 ## ハードウェア
 
-- 2022年7月17日の授業でお持ち帰りできるもの
+- 2022年夏の授業でお持ち帰りできるもの
   - Arduino互換機
     - https://ja.aliexpress.com/item/32996691557.html
   - USBケーブル
@@ -46,7 +46,7 @@ ArduinoとProcessingを用いた講義の資料。
 
 https://ja.wikipedia.org/wiki/Arduino
 
-2022年7月17日の授業では互換機を使用する。
+2022年夏の授業では互換機を使用する。
 
 ## 基板LED点灯テスト
 
@@ -145,7 +145,7 @@ https://www.youtube.com/watch?v=WCJM9WIoudI
 サンプルプログラムはメニューの以下にあるので、動かしてみよう。
 > ファイル -> サンプル -> ライブラリ -> Sound -> IO -> AudioInput
 
-2022年3月26日の授業の環境ではSoundライブラリはインストール済。
+2022年夏の授業の環境ではSoundライブラリはインストール済。
 
 マイクに声を出してみて、挙動を確かめよう。
 
@@ -253,7 +253,7 @@ https://qiita.com/ogailab/items/390ac4cb290b5b0802da
 
 # その他
 
-## 2022年7月17日の授業用ファイル置き場
+## 2022年夏の授業用ファイル置き場
 
 東京工芸大学PC演習室のPCのDelivery(V:)以下のV:\common\arduino_test\以下に諸々置いてある。
 学生アシスタントはその中のreadme.txtを読み指示に従うこと。
@@ -261,7 +261,7 @@ https://qiita.com/ogailab/items/390ac4cb290b5b0802da
 ## ProcessingのProxy設定
 
 東京工芸大学内ではProxyの設定をしないとProcessingが使用できない。
-2022年7月17日の授業では以下のように学生アシスタントが設定する。
+2022年夏の授業では以下のように学生アシスタントが設定する。
 
 1. 所定の方法でProcessingを起動し、設定を開く。
 2. 設定画面にあるpreferences.txtのパスをクリックすると、エクスプローラでpreferences.txtが入ったフォルダが開く。
