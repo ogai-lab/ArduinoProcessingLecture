@@ -169,7 +169,7 @@ speedの値を変えたりして挙動を確かめよう。
 PCのマウス入力をProcessingが受け取り、シリアル通信によってArduinoに送る。
 Arduinoは受け取ったデータを元にサーボモータを動かす。
 
-- Arduino用プログラムはキーボード入力のものと同じ。
+- Arduino用プログラム [/Arduino/SerialByteServo/SerialByteServo.ino](/Arduino/SerialByteServo/SerialByteServo.ino)
 - Processing用プログラム [/Processing/MouseXByte2Serial/MouseXByte2Serial.pde](/Processing/MouseXByte2Serial/MouseXByte2Serial.pde)
 
 Processingで起動したウィンドウ上のマウスの横方向の位置により、サーボモータを動かすことができる。
