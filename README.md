@@ -1,55 +1,54 @@
 # ArduinoProcessingLecture
 
-URL: https://github.com/ogai-lab/ArduinoProcessingLecture
+URL: <https://github.com/ogai-lab/ArduinoProcessingLecture>
 
 ArduinoとProcessingを用いた講義の資料。
+過去の授業資料はpastディレクトリ以下に置く。
 
-2022年夏の東京工芸大学工学部機械コース体験授業では以下の内容で行う。
+2023年6月の東京工芸大学工学部機械コース体験型模擬授業では以下の内容を行う。
 
 - タイトル：PCとマイコンボードによるサーボモータの制御
-- 概要：PCからの様々な入力により、マイコンボードArduinoを通して小型サーボモータを制御する方法について体験します。またサーボモータやマイコンの、社会や研究での利用場面や応用可能性について学びます。
-- 使用する機器の接続の様子：
+- 概要：パソコン(PC)からの入力により、マイコンボードArduino互換機を通してサーボモータを制御する方法について学びます。使用したマイコンボードやモータ、電子部品などはお持ち帰りいただけます。
+
+使用する機器の接続の様子：
 ![Arduino2022-03-26](/images/Arduino2022-03-26.jpg)
 
-# 使用するもの
+## 使用するもの
 
-## ソフトウェア
+### ソフトウェア
 
 - Windows 10
 - Arduino IDE 1.8.19
-  - https://www.arduino.cc/en/software より無料でダウンロードできる。
+  - <https://www.arduino.cc/en/software> より無料でダウンロードできる。
 - Processing 3.5.4 for 64bit
-  - https://processing.org/download より無料でダウンロードできる。
+  - <https://processing.org/download> より無料でダウンロードできる。
 
-## ハードウェア
+### ハードウェア
 
-- 2022年夏の授業でお持ち帰りできるもの
+- お持ち帰りできるもの
   - Arduino互換機
-    - https://ja.aliexpress.com/item/32996691557.html
+    - <https://ja.aliexpress.com/item/32996691557.html>
   - USBケーブル
   - 小型サーボモータ
-    - https://ja.aliexpress.com/item/1005003551920780.html
+    - <https://ja.aliexpress.com/item/1005003551920780.html>
   - ジャンパ線3本
-    - https://www.yodobashi.com/product/100000001003914674/
+    - <https://www.yodobashi.com/product/100000001003914674/>
   - 抵抗内蔵5mmLED赤青
-    - https://akizukidenshi.com/catalog/g/gI-06245/
-    - https://akizukidenshi.com/catalog/g/gI-12519/
+    - <https://akizukidenshi.com/catalog/g/gI-06245/>
+    - <https://akizukidenshi.com/catalog/g/gI-12519/>
   - 光センサ
-    - https://amz.run/5QHd
-- その他備品
-  - マイク
+    - <https://amz.run/5QHd>
 
+## Arduino
 
-# Arduino
+### Arduinoとは
 
-## Arduinoとは
+<https://ja.wikipedia.org/wiki/Arduino>  
+本授業では互換機を使用する。
 
-https://ja.wikipedia.org/wiki/Arduino
+### 基板LED点灯テスト
 
-2022年夏の授業では互換機を使用する。
-
-## 基板LED点灯テスト
-
+まずはPCと接続する。計算機室のPCでは後ろ側のUSBポートに接続した方がなぜか挙動が安定する。  
 Arduinoボード上の"L"と書かれている小さいLEDを点滅させる。以下のメニューからサンプルプログラムを使用する。
 > ファイル -> スケッチ例 -> 01.Basics -> Blink
 
@@ -57,9 +56,12 @@ Arduinoボード上の"L"と書かれている小さいLEDを点滅させる。�
 
 "delay(1000)"と書かれているところの括弧中の数字を変えて再アップロードし、LEDの点滅速度を変えてみよう。
 
-## 抵抗内蔵LED点灯テスト
+参考Webサイト：ArduinoとPCを接続してみよう  
+<https://fabkura.gitbooks.io/arduino-docs/content/chapter3.html>
 
-抵抗内蔵LEDをArduinoに直に差して動作を確認してみよう。
+### 抵抗内蔵LED点灯テスト
+
+抵抗内蔵LEDをArduinoに直に差して動作を確認してみよう。  
 通常、LEDの足の長い方がアノード(プラス)、短い方がカソード(マイナス)と呼ばれる。
 以下のように接続する。
 
@@ -72,10 +74,10 @@ Arduinoボード上の"L"と書かれている小さいLEDを点滅させる。�
 "int fadeAmount = 5"や"delay(30)"と書かれているところの括弧内の数字を変えて、
 LEDの明るさの変化を変えてみよう。
 
-## 光センサテスト
+### 光センサテスト
 
-光センサで周囲の明るさを数値化してみよう。
-以下のように接続する。Arduino A0にはうまいこと2つの線を差す。
+光センサで周囲の明るさを数値化してみよう。  
+以下のように接続する。Arduino A0にはうまいこと2つの線を差す。線が途中で接触しないように注意しよう。
 
 - 抵抗内蔵LED長い足 <-> Arduino 5v
 - 抵抗内蔵LED短い足 <-> Arduino A0
@@ -85,21 +87,18 @@ LEDの明るさの変化を変えてみよう。
 以下のメニューからサンプルプログラムを使用する。
 > ファイル -> スケッチ例 -> 01.Basics -> AnalogReadSerial
 
-LEDに当てる光の強さを変えて、シリアルモニタに出力される値の変化を確かめよう。
+スマホのライトなどをLEDに当てて、シリアルモニタに出力される値の変化を確かめよう。  
 シリアルモニタはメニューの以下から起動できる。
 > ツール -> シリアルモニタ
 
-<!--
-## 光センサの入力でLEDの明るさを変える
+### 光センサの入力でLEDの明るさを変える(時間があれば)
 
 光センサに当てる光の強さを変えて、LEDの明るさの変化を確かめよう。
-あまり変化しなかったら、数字を変えたりしてみよう。
-
+あまり変化しなかったら、数字を変えたりしてみよう。  
 以下のメニューからサンプルプログラムを使用する。
 > ファイル -> スケッチ例 -> 03.Analog -> AnalogInOutSerial
--->
 
-## サーボモータテスト
+### サーボモータテスト
 
 ジャンパ線で以下のとおり接続する。
 
@@ -110,25 +109,26 @@ LEDに当てる光の強さを変えて、シリアルモニタに出力され�
 以下のメニューからサンプルプログラムを使用する。
 > ファイル -> スケッチ例 -> Servo -> Sweep
 
-プログラム中の"myservo.attach(9)"の括弧内の数字を"6"に変える。
+プログラム中の"myservo.attach(9)"の括弧内の数字を"6"に変える。  
 "delay(15)"の括弧内の数字や、0や180などの数字を変えて、モータの動き方を見てみよう。
 
-## 光センサの入力でサーボモータを動かす
+**注意点：** 違う種類のサーボモータが紛れていることがあるので、挙動が他のものと違ったら交換してもらいましょう。
+
+### 光センサの入力でサーボモータを動かす(時間があれば)
 
 以下のメニューからサンプルプログラムを使用する。
 > ファイル -> スケッチ例 -> Servo -> Knob
 
-プログラム中の"myservo.attach(9)"の括弧内の数字を"6"に変える。
-
+プログラム中の"myservo.attach(9)"の括弧内の数字を"6"に変える。  
 LEDに当てる光の強さを変えて、モータの動きが変わることを確認しよう。
 
-# Processing
+## Processing
 
-## Processingとは
+### Processingとは
 
-https://ja.wikipedia.org/wiki/Processing
+<https://ja.wikipedia.org/wiki/Processing>
 
-## Processingのテスト
+### Processingのテスト
 
 サンプルプログラムがメニューのサンプルにいろいろあるので、動かしてみよう。
 例えば以下など。
@@ -136,11 +136,12 @@ https://ja.wikipedia.org/wiki/Processing
 
 左上の三角マークのボタンを押すと実行され、ウィンドウが表示される。
 
-Videoライブラリなどを追加インストールすることで、カメラなども使うことができる。
+参考Webサイト: Videoライブラリなどを追加インストールすることで、カメラなども使うことができる。
 Slit Scanの例。
-https://www.youtube.com/watch?v=WCJM9WIoudI
+<https://www.youtube.com/watch?v=WCJM9WIoudI>
 
-## Processingでのマイク動作テスト
+<!--
+### Processingでのマイク動作テスト
 
 サンプルプログラムはメニューの以下にあるので、動かしてみよう。
 > ファイル -> サンプル -> ライブラリ -> Sound -> IO -> AudioInput
@@ -148,33 +149,36 @@ https://www.youtube.com/watch?v=WCJM9WIoudI
 2022年夏の授業の環境ではSoundライブラリはインストール済。
 
 マイクに声を出してみて、挙動を確かめよう。
+-->
 
-# Arduino+Processing
+## Arduino+Processing
 
-## Processingからのキーボード入力により、Arduinoでサーボモータを動かす
+### Processingからのキーボード入力により、Arduinoでサーボモータを動かす(時間があれば)
 
 PCのキーボード入力をProcessingが受け取り、シリアル通信によってArduinoに送る。
-Arduinoは受け取ったデータを元にサーボモータを動かす。
+Arduinoは受け取ったデータを元にサーボモータを動かす。  
+ファイルは以下の場所に置いてある。授業では各PCに配布済。
 
 - Arduino用プログラム [/Arduino/SerialByteServo/SerialByteServo.ino](/Arduino/SerialByteServo/SerialByteServo.ino)
 - Processing用プログラム [/Processing/KeyLRByte2Serial/KeyLRByte2Serial.pde](/Processing/KeyLRByte2Serial/KeyLRByte2Serial.pde)
 
-Processing用プログラムのSerial.list()[]の数値を変える必要があるかもしれない。
-
+Processing用プログラムのSerial.list()[]の数値を変える必要があるかもしれない。  
 lキー(left)とrキー(right)を押すと、サーボモータを動かすことができる。
 speedの値を変えたりして挙動を確かめよう。
 
-## Processingからのマウス入力により、Arduinoでサーボモータを動かす
+### Processingからのマウス入力により、Arduinoでサーボモータを動かす
 
 PCのマウス入力をProcessingが受け取り、シリアル通信によってArduinoに送る。
-Arduinoは受け取ったデータを元にサーボモータを動かす。
+Arduinoは受け取ったデータを元にサーボモータを動かす。  
+ファイルは以下の場所に置いてある。授業では各PCに配布済。
 
 - Arduino用プログラム [/Arduino/SerialByteServo/SerialByteServo.ino](/Arduino/SerialByteServo/SerialByteServo.ino)
 - Processing用プログラム [/Processing/MouseXByte2Serial/MouseXByte2Serial.pde](/Processing/MouseXByte2Serial/MouseXByte2Serial.pde)
 
 Processingで起動したウィンドウ上のマウスの横方向の位置により、サーボモータを動かすことができる。
 
-## Processingからのマイク入力により、Arduinoでサーボモータを動かす
+<!--
+### Processingからのマイク入力により、Arduinoでサーボモータを動かす
 
 PCのマイク入力をProcessingが受け取り、シリアル通信によってArduinoに送る。
 Arduinoは受け取ったデータを元にサーボモータを動かす。
@@ -184,6 +188,7 @@ Arduinoは受け取ったデータを元にサーボモータを動かす。
 
 マイク入力の大きさにより、サーボモータを動かすことができる。
 VolumeMaxの値などを変えて挙動を確かめよう。
+-->
 
 <!--
 ## カメラ入力でモータを動かす
@@ -195,38 +200,47 @@ VolumeMaxの値などを変えて挙動を確かめよう。
 
 -->
 
-# マイコンとサーボモータの応用場面
+## マイコンとサーボモータの応用事例
 
-## Arduinoドローンの例
+様々な研究などでもマイコンやサーボモータは使用されている。
+持ち帰って自分でも自宅で試してみれば、いつか研究につながるだろう。
 
-Arduino Drone With GPS
-https://www.instructables.com/Arduino-Drone-With-GPS/
+### Arduinoドローンの例
 
-## 二足歩行ロボットキットの例
+Arduino Drone With GPS  
+<https://www.instructables.com/Arduino-Drone-With-GPS/>
 
-近藤科学 KHR-3HV
-https://www.vstone.co.jp/robotshop/index.php?main_page=index&cPath=70_117
+### 二足歩行ロボットキットの例
 
-## 顔の表情を生成するロボットの研究例
+近藤科学 KHR-3HV  
+<https://www.vstone.co.jp/robotshop/index.php?main_page=index&cPath=70_117>
 
-"Facially expressive humanoid robotic face",
-Zanwar Faraj, Mert Selamet, Carlos Morales, Maimuna Hossain, Boyuan Chen, Hod Lipson, HardwareX, Volume 9, E00117, April 1, 2021
-https://www.hardware-x.com/article/S2468-0672(20)30026-2/fulltext
+### 顔の表情を生成するロボットの研究例
 
-# 今後の学習のために
+"Facially expressive humanoid robotic face"  
+Zanwar Faraj, Mert Selamet, Carlos Morales, Maimuna Hossain, Boyuan Chen, Hod Lipson, HardwareX, Volume 9, E00117, April 1, 2021  
+<https://www.hardware-x.com/article/S2468-0672(20)30026-2/fulltext>
 
-## 参考書
+## 今後の学習のために
 
-- Arduinoをはじめよう 第2版 https://www.oreilly.co.jp/books/9784873115375/
-- Processingをはじめよう 第2版 https://www.oreilly.co.jp/books/9784873117737/
+### 今回の内容の復習
 
+今回の内容はWebページ <https://github.com/ogai-lab/ArduinoProcessingLecture> で公開しています。
+このURLをメモをして、お持ち帰りいただいたマイコンとモータで御自宅で再度試していただけたらと思います。
 
-## 追加学習案
+また、何でもご質問があれば制作者の大海のメールアドレスまでご連絡下さい。
+担当されている方はホワイトボードにアドレスを書いておいて下さい。
 
-### Arduinoをはじめようキット
+### 参考書
 
-https://www.switch-science.com/catalog/181/
+- Arduinoをはじめよう 第4版 <https://www.oreilly.co.jp/books/9784814400232/>
+- Processingをはじめよう 第2版 <https://www.oreilly.co.jp/books/9784873117737/>
 
+### 追加学習案
+
+#### Arduinoをはじめようキット
+
+<https://www.switch-science.com/catalog/181/>  
 Arduinoは互換機をそのまま使えるので、以下のような必要そうな部品だけ別に購入してもよい。
 
 - ブレッドボード
@@ -234,34 +248,32 @@ Arduinoは互換機をそのまま使えるので、以下のような必要そ�
 - 抵抗
 - ジャンパ線、等々
 
-### パルスオキシメータ
+#### パルスオキシメータ
 
-ArduinoとMax30102でSpO2を計測する
-https://qiita.com/ogailab/items/390ac4cb290b5b0802da
+ArduinoとMax30102でSpO2を計測する  
+<https://qiita.com/ogailab/items/390ac4cb290b5b0802da>
 
-### DCモータ、ギアボックス
+#### DCモータ、ギアボックス
 
 ブライテンベルグビークル(Braitenberg Vehicle)というロボットをArduinoで実装した例。
-
 ![BraitenbergVehicleTop](/images/BraitenbergVehicleTop.jpg)
-
 ![BraitenbergVehicleBottom](/images/BraitenbergVehicleBottom.jpg)
 
-使用部品例
-- タミヤ ダブルギヤボックス https://www.tamiya.com/japan/products/70168/index.html
-- Arduino用モータードライバシールド「Ardumoto」https://www.switch-science.com/catalog/3262/
+使用部品の例
 
-# その他
+- タミヤ ダブルギヤボックス <https://www.tamiya.com/japan/products/70168/index.html>
+- Arduino用モータードライバシールド「Ardumoto」<https://www.switch-science.com/catalog/3262/>
 
-## 2022年夏の授業用ファイル置き場
+## 工芸大PC演習室の設定
+
+### 授業用ファイル置き場
 
 東京工芸大学PC演習室のPCのDelivery(V:)以下のV:\common\arduino_test\以下に諸々置いてある。
-学生アシスタントはその中のreadme.txtを読み指示に従うこと。
+学生アシスタントはその中のpreferences4t-kougei\readme.txtを読み指示に従うこと。
 
-## ProcessingのProxy設定
+### ProcessingのProxy設定
 
-東京工芸大学内ではProxyの設定をしないとProcessingが使用できない。
-2022年夏の授業では以下のように学生アシスタントが設定する。
+東京工芸大学内ではProxyの設定をしないとProcessingが使用できない。以下のように学生アシスタントが設定する。
 
 1. 所定の方法でProcessingを起動し、設定を開く。
 2. 設定画面にあるpreferences.txtのパスをクリックすると、エクスプローラでpreferences.txtが入ったフォルダが開く。
@@ -269,4 +281,4 @@ https://qiita.com/ogailab/items/390ac4cb290b5b0802da
 4. preferences.txtをダブルクリックし、所定の内容で編集し、保存、エディタを終了する。
 5. Processingをまた起動する。
 
-参考：蛍石製作所 processingのプロキシ設定 https://fluorite36.hatenablog.com/entry/2018/11/09/002758
+参考：蛍石製作所 processingのプロキシ設定 <https://fluorite36.hatenablog.com/entry/2018/11/09/002758>
