@@ -5,13 +5,15 @@ URL: <https://github.com/ogai-lab/ArduinoProcessingLecture>
 ArduinoとProcessingを用いた講義の資料。
 過去の授業資料はpastディレクトリ以下に置く。
 
-2023年6月の東京工芸大学工学部機械コース体験型模擬授業では以下の内容を行う。
+2023年7月の東京工芸大学工学部機械コース体験型模擬授業では以下の内容を行う。
 
-- タイトル：PCとマイコンボードによるサーボモータの制御
-- 概要：パソコン(PC)からの入力により、マイコンボードArduino互換機を通してサーボモータを制御する方法について学びます。使用したマイコンボードやモータ、電子部品などはお持ち帰りいただけます。
+- 第2回：PCとマイコンボードによる振動モータの制御
+- 概要：パソコン(PC)からの入力により、マイコンボードArduino互換機を通して振動モータを制御する方法について学びます。使用したマイコンボードやモータ、電子部品などはお持ち帰りいただけます。
 
-使用する機器の接続の様子：
+<!--
+  使用する機器の接続の様子：
 ![Arduino2022-03-26](/images/Arduino2022-03-26.jpg)
+-->
 
 ## 使用するもの
 
@@ -25,18 +27,20 @@ ArduinoとProcessingを用いた講義の資料。
 
 ### ハードウェア
 
-- お持ち帰りできるもの
-  - Arduino互換機
+- お持ち帰りいただけるもの
+  - Arduino互換機 1台
     - <https://ja.aliexpress.com/item/32996691557.html>
-  - USBケーブル
-  - 小型サーボモータ
-    - <https://ja.aliexpress.com/item/1005003551920780.html>
-  - ジャンパ線3本
-    - <https://www.yodobashi.com/product/100000001003914674/>
-  - 抵抗内蔵5mmLED赤青
-    - <https://akizukidenshi.com/catalog/g/gI-06245/>
-    - <https://akizukidenshi.com/catalog/g/gI-12519/>
-  - 光センサ
+  - USBケーブル 1本
+  - 振動モータ 3個
+    - <https://ja.aliexpress.com/item/1005004653448729.html>
+  - ワニ口クリップ 6本
+    - <https://ja.aliexpress.com/item/33059461046.html>
+  - ジャンパ線 4本
+    - <https://ja.aliexpress.com/item/4000203371860.html>
+  - 抵抗内蔵5mmLED赤黄 各1個
+    - <https://akizukidenshi.com/catalog/g/gI-06250/>
+    - <https://akizukidenshi.com/catalog/g/gI-06253/>
+  - 光センサ 1個
     - <https://amz.run/5QHd>
 
 ## Arduino
@@ -46,10 +50,11 @@ ArduinoとProcessingを用いた講義の資料。
 <https://ja.wikipedia.org/wiki/Arduino>  
 本授業では互換機を使用する。
 
-### 基板LED点灯テスト
+### 基板LED点灯プログラム
 
 まずはPCと接続する。計算機室のPCでは後ろ側のUSBポートに接続した方がなぜか挙動が安定する。  
-Arduinoボード上の"L"と書かれている小さいLEDを点滅させる。以下のメニューからサンプルプログラムを使用する。
+Arduinoボード上の"L"と書かれている小さいLEDを点滅させる。  
+メニューから以下のサンプルプログラムを開く。
 > ファイル -> スケッチ例 -> 01.Basics -> Blink
 
 メニューのツールから、ボードとポートの設定を確認してから、左上の右向きの矢印(→)ボタンを押すと、プログラムがArduinoにアップロードされる。アップロード後、自動的にプログラムが実行される。
@@ -59,7 +64,7 @@ Arduinoボード上の"L"と書かれている小さいLEDを点滅させる。�
 参考Webサイト：ArduinoとPCを接続してみよう  
 <https://fabkura.gitbooks.io/arduino-docs/content/chapter3.html>
 
-### 抵抗内蔵LED点灯テスト
+### 抵抗内蔵LED点灯プログラム
 
 抵抗内蔵LEDをArduinoに直に差して動作を確認してみよう。  
 通常、LEDの足の長い方がアノード(プラス)、短い方がカソード(マイナス)と呼ばれる。
@@ -68,13 +73,12 @@ Arduinoボード上の"L"と書かれている小さいLEDを点滅させる。�
 - 抵抗内蔵LED長い足 <-> Arduino 9番ピン
 - 抵抗内蔵LED短い足 <-> Arduino GND
 
-以下のメニューからサンプルプログラムを使用する。
+メニューから以下のサンプルプログラムを開く。
 > ファイル -> スケッチ例 -> 01.Basics -> Fade
 
-"int fadeAmount = 5"や"delay(30)"と書かれているところの括弧内の数字を変えて、
-LEDの明るさの変化を変えてみよう。
+"int fadeAmount = 5"や"delay(30)"の数値を変えたときの、LEDの明るさの変化を見てみよう。
 
-### 光センサテスト
+### 光センサプログラム
 
 光センサで周囲の明るさを数値化してみよう。  
 以下のように接続する。Arduino A0にはうまいこと2つの線を差す。線が途中で接触しないように注意しよう。
@@ -84,7 +88,7 @@ LEDの明るさの変化を変えてみよう。
 - 光センサ <-> Arduino A0
 - 光センサ <-> Arduino GND
 
-以下のメニューからサンプルプログラムを使用する。
+メニューから以下のサンプルプログラムを開く。
 > ファイル -> スケッチ例 -> 01.Basics -> AnalogReadSerial
 
 スマホのライトなどをLEDに当てて、シリアルモニタに出力される値の変化を確かめよう。  
@@ -95,32 +99,122 @@ LEDの明るさの変化を変えてみよう。
 
 光センサに当てる光の強さを変えて、LEDの明るさの変化を確かめよう。
 あまり変化しなかったら、数字を変えたりしてみよう。  
-以下のメニューからサンプルプログラムを使用する。
+メニューから以下のサンプルプログラムを開く。
 > ファイル -> スケッチ例 -> 03.Analog -> AnalogInOutSerial
 
-### サーボモータテスト
+### 振動モータ動作確認
 
-ジャンパ線で以下のとおり接続する。
+振動モータの線が細いので、振動モータの線をワニ口クリップではさみ、ワニ口クリップの反対側でジャンパ線をはさむ。  
+そのジャンパ線を以下のようにArduinoのピンに入れると、モータが動きだすはずである。  
+振動モータの線は購入したままではワニ口クリップで掴みづらいので、ワイヤストリッパ(単線AWG28あたり)で被覆を5mm程度剥いている。  
+振動モータの線は入れ替えても動く。
 
-- サーボモータ橙色線 <-> Arduino 6番ピン
-- サーボモータ赤色線 <-> Arduino 5Vピン
-- サーボモータ茶色線 <-> Arduino GNDピン
+- 振動モータの線1 <-> ワニ口クリップ <-> ジャンパ線 <-> Arduino GNDピン
+- 振動モータの線2 <-> ワニ口クリップ <-> ジャンパ線 <-> Arduino 3.3Vピン
 
-以下のメニューからサンプルプログラムを使用する。
-> ファイル -> スケッチ例 -> Servo -> Sweep
+### 振動モータプログラム
 
-プログラム中の"myservo.attach(9)"の括弧内の数字を"6"に変える。  
-"delay(15)"の括弧内の数字や、0や180などの数字を変えて、モータの動き方を見てみよう。
+振動モータは定格電圧DC3V、電圧使用範囲がDC2.5V-4Vで、安全のため先にプログラムをアップロードする。  
+まずは、メニューから以下のサンプルプログラムを選ぶ。LED用のプログラムだが流用できる。
+> ファイル -> スケッチ例 -> 01.Basics -> Fade
 
-**注意点：** 違う種類のサーボモータが紛れていることがあるので、挙動が他のものと違ったら交換してもらいましょう。
+以下のように"255"と書かれているところについて、
 
-### 光センサの入力でサーボモータを動かす(時間があれば)
+```Arduino
+if (brightness <= 0 || brightness >= 255) {
+```
 
-以下のメニューからサンプルプログラムを使用する。
-> ファイル -> スケッチ例 -> Servo -> Knob
+以下のように"160"に変えて、アップロードする。
 
-プログラム中の"myservo.attach(9)"の括弧内の数字を"6"に変える。  
-LEDに当てる光の強さを変えて、モータの動きが変わることを確認しよう。
+```Arduino
+if (brightness <= 0 || brightness >= 160) {
+```
+
+そして、ワニ口クリップとジャンパ線で以下のとおり接続する。
+
+- 振動モータの線1 <-> Arduino 9番ピン
+- 振動モータの線2 <-> Arduino GNDピン
+
+プログラム中の"int fadeAmount = 5"や"delay(30)"の数値を変えて、振動モータの変化の仕方を見てみよう。
+
+### 振動モータ3個プログラム
+
+先ほどと同じプログラムに、3箇所を以下のように追記する。  
+1箇所目は、
+
+```Arduino
+int led = 9;
+```
+
+を以下に変える。
+
+```Arduino
+int led = 9;
+int led2 = 5;
+int led2 = 6;
+```
+
+2箇所目は、
+
+```Arduino
+pinMode(led, OUTPUT);
+```
+
+を以下に変える。
+
+```Arduino
+pinMode(led, OUTPUT);
+pinMode(led2, OUTPUT);
+pinMode(led3, OUTPUT);
+```
+
+3箇所目は、
+
+```Arduino
+analogWrite(led, brightness);
+```
+
+を以下に変える。
+
+```Arduino
+analogWrite(led, brightness);
+analogWrite(led2, (brightness+53)%160);
+analogWrite(led3, (brightness+106)%160);
+```
+
+そして、ワニ口クリップとジャンパ線で以下のとおり接続する。  
+GNDピンに接続されているジャンパ線の反対側には3本のワニ口クリップが接続される。  
+9、5、6番ピンはPWM出力に対応しているのでanalgoWrite関数が利用できる。
+
+- 振動モータ1の線1 <-> Arduino 9番ピン
+- 振動モータ1の線2 <-> Arduino GNDピン
+- 振動モータ2の線1 <-> Arduino 5番ピン
+- 振動モータ2の線2 <-> Arduino GNDピン
+- 振動モータ3の線1 <-> Arduino 6番ピン
+- 振動モータ3の線2 <-> Arduino GNDピン
+
+振動モータが3個とも動くはずである。  
+動いたら触ってみて、動きの違いを確認してみたり、どうして違うのか考えてみよう。
+
+### 光センサの入力で振動モータを動かす(時間があれば)
+
+光センサに当てる光の強さを変えて、振動モータの変化を確かめよう。  
+メニューから以下のサンプルプログラムを開く。
+> ファイル -> スケッチ例 -> 03.Analog -> AnalogInOutSerial
+
+以下のように"255"と書かれているところについて、
+
+```Arduino
+outputValue = map(sensorValue, 0, 1023, 0, 255);
+```
+
+以下のように"160"に変えて、アップロードする。
+
+```Arduino
+outputValue = map(sensorValue, 0, 1023, 0, 160);
+```
+
+LEDに当てる光の強さを変えて、9番ピンに接続されている振動モータの動きが変わることを確認しよう。
 
 ## Processing
 
@@ -153,29 +247,30 @@ Slit Scanの例。
 
 ## Arduino+Processing
 
-### Processingからのキーボード入力により、Arduinoでサーボモータを動かす(時間があれば)
+### Processingからのマウス入力により、Arduinoで振動モータを動かす
 
-PCのキーボード入力をProcessingが受け取り、シリアル通信によってArduinoに送る。
-Arduinoは受け取ったデータを元にサーボモータを動かす。  
+PCのマウス入力をProcessingが受け取り、シリアル通信によってArduinoに送る。
+Arduinoは受け取ったデータを元に振動モータを動かす。  
 ファイルは以下の場所に置いてある。授業では各PCに配布済。
 
-- Arduino用プログラム [/Arduino/SerialByteServo/SerialByteServo.ino](/Arduino/SerialByteServo/SerialByteServo.ino)
+- Arduino用プログラム [/Arduino/SerialByteServo/SerialByteVibration.ino](/Arduino/SerialByteServo/SerialByteVibration.ino)
+- Processing用プログラム [/Processing/MouseXByte2Serial/MouseXByte2Serial.pde](/Processing/MouseXByte2Serial/MouseXByte2Serial.pde)
+
+Processing用プログラムのSerial.list()[]の数値を変える必要があるかもしれない。  
+Processingで起動したウィンドウ上のマウスの横方向の位置により、モータを動かすことができる。
+
+### Processingからのキーボード入力により、Arduinoで振動モータを動かす(時間があれば)
+
+PCのキーボード入力をProcessingが受け取り、シリアル通信によってArduinoに送る。
+Arduinoは受け取ったデータを元に振動モータを動かす。  
+ファイルは以下の場所に置いてある。授業では各PCに配布済。
+
+- Arduino用プログラム [/Arduino/SerialByteServo/SerialByteVibration.ino](/Arduino/SerialByteServo/SerialByteVibration.ino)
 - Processing用プログラム [/Processing/KeyLRByte2Serial/KeyLRByte2Serial.pde](/Processing/KeyLRByte2Serial/KeyLRByte2Serial.pde)
 
 Processing用プログラムのSerial.list()[]の数値を変える必要があるかもしれない。  
-lキー(left)とrキー(right)を押すと、サーボモータを動かすことができる。
+lキー(left)とrキー(right)を押すと、モータを動かすことができる。
 speedの値を変えたりして挙動を確かめよう。
-
-### Processingからのマウス入力により、Arduinoでサーボモータを動かす
-
-PCのマウス入力をProcessingが受け取り、シリアル通信によってArduinoに送る。
-Arduinoは受け取ったデータを元にサーボモータを動かす。  
-ファイルは以下の場所に置いてある。授業では各PCに配布済。
-
-- Arduino用プログラム [/Arduino/SerialByteServo/SerialByteServo.ino](/Arduino/SerialByteServo/SerialByteServo.ino)
-- Processing用プログラム [/Processing/MouseXByte2Serial/MouseXByte2Serial.pde](/Processing/MouseXByte2Serial/MouseXByte2Serial.pde)
-
-Processingで起動したウィンドウ上のマウスの横方向の位置により、サーボモータを動かすことができる。
 
 <!--
 ### Processingからのマイク入力により、Arduinoでサーボモータを動かす
@@ -200,26 +295,22 @@ VolumeMaxの値などを変えて挙動を確かめよう。
 
 -->
 
-## マイコンとサーボモータの応用事例
+## マイコンと振動モータの応用事例
 
-様々な研究などでもマイコンやサーボモータは使用されている。
-持ち帰って自分でも自宅で試してみれば、いつか研究につながるだろう。
+様々な研究などでもマイコンや振動モータは使用されている。
+また、振動モータはスマートフォンやVR装置などでも広く使われている。
+持ち帰って自分でも自宅で試してみれば、きっと将来につながるだろう。
 
 ### Arduinoドローンの例
 
 Arduino Drone With GPS  
 <https://www.instructables.com/Arduino-Drone-With-GPS/>
 
-### 二足歩行ロボットキットの例
+### VR研究に振動モータを用いた例
 
-近藤科学 KHR-3HV  
-<https://www.vstone.co.jp/robotshop/index.php?main_page=index&cPath=70_117>
-
-### 顔の表情を生成するロボットの研究例
-
-"Facially expressive humanoid robotic face"  
-Zanwar Faraj, Mert Selamet, Carlos Morales, Maimuna Hossain, Boyuan Chen, Hod Lipson, HardwareX, Volume 9, E00117, April 1, 2021  
-<https://www.hardware-x.com/article/S2468-0672(20)30026-2/fulltext>
+"Haplets: Finger-Worn Wireless and Low-Encumbrance Vibrotactile Haptic Feedback for Virtual and Augmented Reality"  
+Pornthep Preechayasomboon, Eric Rombokas, Front. Virtual Real., Volume 2, 2021  
+<https://www.frontiersin.org/articles/10.3389/frvir.2021.738613/full>
 
 ## 今後の学習のために
 
