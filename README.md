@@ -253,7 +253,7 @@ PCのマウス入力をProcessingが受け取り、シリアル通信によっ�
 Arduinoは受け取ったデータを元に振動モータを動かす。  
 ファイルは以下の場所に置いてある。授業では各PCに配布済。
 
-- Arduino用プログラム [/Arduino/SerialByteServo/SerialByteVibration.ino](/Arduino/SerialByteServo/SerialByteVibration.ino)
+- Arduino用プログラム [/Arduino/SerialByteVibration/SerialByteVibration.ino](/Arduino/SerialByteVibration/SerialByteVibration.ino)
 - Processing用プログラム [/Processing/MouseXByte2Serial/MouseXByte2Serial.pde](/Processing/MouseXByte2Serial/MouseXByte2Serial.pde)
 
 Processing用プログラムのSerial.list()[]の数値を変える必要があるかもしれない。  
@@ -265,7 +265,7 @@ PCのキーボード入力をProcessingが受け取り、シリアル通信に�
 Arduinoは受け取ったデータを元に振動モータを動かす。  
 ファイルは以下の場所に置いてある。授業では各PCに配布済。
 
-- Arduino用プログラム [/Arduino/SerialByteServo/SerialByteVibration.ino](/Arduino/SerialByteServo/SerialByteVibration.ino)
+- Arduino用プログラム [/Arduino/SerialByteVibration/SerialByteVibration.ino](/Arduino/SerialByteVibration/SerialByteVibration.ino)
 - Processing用プログラム [/Processing/KeyLRByte2Serial/KeyLRByte2Serial.pde](/Processing/KeyLRByte2Serial/KeyLRByte2Serial.pde)
 
 Processing用プログラムのSerial.list()[]の数値を変える必要があるかもしれない。  
