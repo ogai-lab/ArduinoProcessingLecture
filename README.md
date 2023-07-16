@@ -151,7 +151,7 @@ int led = 9;
 ```Arduino
 int led = 9;
 int led2 = 5;
-int led2 = 6;
+int led3 = 6;
 ```
 
 2箇所目は、
