@@ -10,10 +10,8 @@ ArduinoとProcessingを用いた講義の資料。
 - 第2回：PCとマイコンボードによる振動モータの制御
 - 概要：パソコン(PC)からの入力により、マイコンボードArduino互換機を通して振動モータを制御する方法について学びます。使用したマイコンボードやモータ、電子部品などはお持ち帰りいただけます。
 
-<!--
-  使用する機器の接続の様子：
-![Arduino2022-03-26](/images/Arduino2022-03-26.jpg)
--->
+使用する機器の接続の様子：
+![ArduinoVibrationMotor](/images/ArduinoVibrationMotor.jpg)
 
 ## 使用するもの
 
