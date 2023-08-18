@@ -1,5 +1,3 @@
-#include <Servo.h>
-
 int vibration0 = 9;
 int vibration1 = 5;
 int vibration2 = 6;

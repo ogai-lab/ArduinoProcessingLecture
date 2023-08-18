@@ -10,7 +10,7 @@ ArduinoとProcessingを用いた講義の資料。
 - 第3回：PCとマイコンボードによるDCモータの制御
 - 概要：パソコン(PC)からの入力により、マイコンボードArduino互換機を通してDCモータを制御する方法について学びます。使用したマイコンボードやモータ、電子部品などはお持ち帰りいただけます。
 
-使用する機器の接続の様子：
+使用する機器の接続の様子：  
 ![ArduinoDCmotor](/images/ArduinoDCmotor.jpg)
 
 ## 使用するもの
@@ -113,125 +113,77 @@ Arduinoボード上の"L"と書かれている小さいLEDを点滅させる。
 
 ### DCモータ1個の動作確認
 
-TinkercadによるDCモータ2個の回路図
-![Tinkercad-ArduinoDCmotor](/images/Tinkercad-ArduinoDCmotor.png)  
-<https://www.tinkercad.com/things/kiaBNcaXHyF>  
-回路図内では抵抗のサイズが大きかったのでこのように示しているが、実際は抵抗はMOSFET左(ゲート)とMOSFET右(ソース)をまたぐように差せばよい。  
-まずは1個だけを動かしてみる。
+TinkercadによるDCモータ1個の回路図  
+![Tinkercad-ArduinoDCmotor](/images/Tinkercad-Arduino1DCmotor.png)  
+<https://www.tinkercad.com/things/7tMNzty2JFr>  
+回路図内では抵抗のサイズが大きかったのでこのように示しているが、実際は抵抗はMOSFET左(ゲート)とMOSFET右(ソース)をまたぐように差せばよい。
 
-DCモータの端子をワニ口クリップではさみ、ワニ口クリップの反対側でジャンパ線をはさむ。そのジャンパ線の反対側をブレッドボードに差す。  
 ブレッドボードは中央部は縦方向に、上下部は横方向に内部で接続されている。(内部の画像：<https://m.media-amazon.com/images/I/713Uj2JUJaL._AC_SL1355_.jpg>)  
-以下のように接続をする。
-- DCモータ1の線1 <-> Arduino Vin
-- DCモータ1の線2 <-> MOSFET中(ドレイン) <-> ダイオード(線がこちら) <-> Arduino Vin
-- Arduino 9番ピン <-> MOSFET左(ゲート) <-> 抵抗 <-> MOSFET右(ソース) <-> Arduino GND
+DCモータと電池ボックスは直接ブレッドボードに差さらないので、各端子をワニ口クリップではさみ、ワニ口クリップの反対側でジャンパ線をはさむ。そのジャンパ線の反対側をブレッドボードに差す。  
+電池ボックスに単三電池4本を入れるのだが、<span style="color:red">赤線と黒線が直接接続されると高温になり危険</span>なので注意すること。  
+モータはギアを付けると動きが分かりやすくなる。  
+以下がつながるようにする。整流ダイオードは線が記載されている側をカソード、記載されていない側をアノードと呼ぶ。
 
-メニューから以下のサンプルプログラムを開く。
+- DCモータ1の線1、電池ボックス赤線、整流ダイオード(カソード)
+- MOSFET左(ゲート)、Arduino 9番ピン、抵抗の片側
+- MOSFET中(ドレイン)、DCモータ1の線2、整流ダイオード(アノード)
+- MOSFET右(ソース)、電池ボックス黒線、抵抗の反対側、Arduino GND
+
+メニューから以下のサンプルプログラムを開き、書き込むとDCモータが動くはずである。こちらも数値をいろいろ変えて試してみよう。
 > ファイル -> スケッチ例 -> 01.Basics -> Fade
 
-### 振動モータプログラム
+### DCモータ2個の動作確認(時間があれば)
 
-振動モータは定格電圧DC3V、電圧使用範囲がDC2.5V-4Vで、安全のため先にプログラムをアップロードする。  
-まずは、メニューから以下のサンプルプログラムを選ぶ。LED用のプログラムだが流用できる。
+TinkercadによるDCモータ2個の回路図  
+![Tinkercad-ArduinoDCmotor](/images/Tinkercad-Arduino2DCmotor.png)  
+<https://www.tinkercad.com/things/kiaBNcaXHyF>  
+「DCモータ1個の動作確認」で示した配線に加え、以下がつながるようにする。
+
+- DCモータ2の線1、Arduino Vin、整流ダイオード(カソード)
+- MOSFET左(ゲート)、Arduino 6番ピン、抵抗の片側
+- MOSFET中(ドレイン)、DCモータ2の線2、整流ダイオード(アノード)
+- MOSFET右(ソース)、抵抗の反対側、Arduino GND
+
+「DCモータ1個の動作確認」と同様の以下のプログラムについて、
 > ファイル -> スケッチ例 -> 01.Basics -> Fade
 
-以下のように"255"と書かれているところについて、
+の2箇所に追記する。
 
-```Arduino
-if (brightness <= 0 || brightness >= 255) {
-```
-
-以下のように"160"に変えて、アップロードする。
-
-```Arduino
-if (brightness <= 0 || brightness >= 160) {
-```
-
-そして、ワニ口クリップとジャンパ線で以下のとおり接続する。
-
-- 振動モータの線1 <-> Arduino 9番ピン
-- 振動モータの線2 <-> Arduino GNDピン
-
-プログラム中の"int fadeAmount = 5"や"delay(30)"の数値を変えて、振動モータの変化の仕方を見てみよう。
-
-### 振動モータ3個プログラム
-
-先ほどと同じプログラムに、3箇所を以下のように追記する。  
 1箇所目は、
 
 ```Arduino
-int led = 9;
+  pinMode(led, OUTPUT);
 ```
 
 を以下に変える。
 
 ```Arduino
-int led = 9;
-int led2 = 5;
-int led3 = 6;
+  pinMode(led, OUTPUT);
+  pinMode(6, OUTPUT);
 ```
 
 2箇所目は、
 
 ```Arduino
-pinMode(led, OUTPUT);
+  analogWrite(led, brightness);
 ```
 
 を以下に変える。
 
 ```Arduino
-pinMode(led, OUTPUT);
-pinMode(led2, OUTPUT);
-pinMode(led3, OUTPUT);
+  analogWrite(led, brightness);
+  analogWrite(6, brightness);
 ```
 
-3箇所目は、
+このプログラムを書き込むと、2個のDCモータが動くはずである。
 
-```Arduino
-analogWrite(led, brightness);
-```
+### 光センサの入力でDCモータを動かす(時間があれば)
 
-を以下に変える。
-
-```Arduino
-analogWrite(led, brightness);
-analogWrite(led2, (brightness+53)%160);
-analogWrite(led3, (brightness+106)%160);
-```
-
-そして、ワニ口クリップとジャンパ線で以下のとおり接続する。  
-GNDピンに接続されているジャンパ線の反対側には3本のワニ口クリップが接続される。  
-9、5、6番ピンはPWM出力に対応しているのでanalgoWrite関数が利用できる。
-
-- 振動モータ1の線1 <-> Arduino 9番ピン
-- 振動モータ1の線2 <-> Arduino GNDピン
-- 振動モータ2の線1 <-> Arduino 5番ピン
-- 振動モータ2の線2 <-> Arduino GNDピン
-- 振動モータ3の線1 <-> Arduino 6番ピン
-- 振動モータ3の線2 <-> Arduino GNDピン
-
-振動モータが3個とも動くはずである。  
-動いたら触ってみて、動きの違いを確認してみたり、どうして違うのか考えてみよう。
-
-### 光センサの入力で振動モータを動かす(時間があれば)
-
-光センサに当てる光の強さを変えて、振動モータの変化を確かめよう。  
+光センサに当てる光の強さを変えて、モータの変化を確かめよう。  
 メニューから以下のサンプルプログラムを開く。
 > ファイル -> スケッチ例 -> 03.Analog -> AnalogInOutSerial
 
-以下のように"255"と書かれているところについて、
-
-```Arduino
-outputValue = map(sensorValue, 0, 1023, 0, 255);
-```
-
-以下のように"160"に変えて、アップロードする。
-
-```Arduino
-outputValue = map(sensorValue, 0, 1023, 0, 160);
-```
-
-LEDに当てる光の強さを変えて、9番ピンに接続されている振動モータの動きが変わることを確認しよう。
+LEDに当てる光の強さを変えて、9番ピンに接続されているモータの動きが変わることを確認しよう。
 
 ## Processing
 
@@ -264,25 +216,25 @@ Slit Scanの例。
 
 ## Arduino+Processing
 
-### Processingからのマウス入力により、Arduinoで振動モータを動かす
+### Processingからのマウス入力により、ArduinoでDCモータを動かす
 
 PCのマウス入力をProcessingが受け取り、シリアル通信によってArduinoに送る。
-Arduinoは受け取ったデータを元に振動モータを動かす。  
+Arduinoは受け取ったデータを元にモータを動かす。  
 ファイルは以下の場所に置いてある。授業では各PCに配布済。
 
-- Arduino用プログラム [/Arduino/SerialByteVibration/SerialByteVibration.ino](/Arduino/SerialByteVibration/SerialByteVibration.ino)
+- Arduino用プログラム [/Arduino/SerialByteDCmotor/SerialByteDCmotor.ino](/Arduino/SerialByteDCmotor/SerialByteDCmotor.ino)
 - Processing用プログラム [/Processing/MouseXByte2Serial/MouseXByte2Serial.pde](/Processing/MouseXByte2Serial/MouseXByte2Serial.pde)
 
 Processing用プログラムのSerial.list()[]の数値を変える必要があるかもしれない。  
 Processingで起動したウィンドウ上のマウスの横方向の位置により、モータを動かすことができる。
 
-### Processingからのキーボード入力により、Arduinoで振動モータを動かす(時間があれば)
+### Processingからのキーボード入力により、ArduinoでDCモータを動かす(時間があれば)
 
 PCのキーボード入力をProcessingが受け取り、シリアル通信によってArduinoに送る。
-Arduinoは受け取ったデータを元に振動モータを動かす。  
+Arduinoは受け取ったデータを元にモータを動かす。  
 ファイルは以下の場所に置いてある。授業では各PCに配布済。
 
-- Arduino用プログラム [/Arduino/SerialByteVibration/SerialByteVibration.ino](/Arduino/SerialByteVibration/SerialByteVibration.ino)
+- Arduino用プログラム [/Arduino/SerialByteDCmotor/SerialByteDCmotor.ino](/Arduino/SerialByteDCmotor/SerialByteDCmotor.ino)
 - Processing用プログラム [/Processing/KeyLRByte2Serial/KeyLRByte2Serial.pde](/Processing/KeyLRByte2Serial/KeyLRByte2Serial.pde)
 
 Processing用プログラムのSerial.list()[]の数値を変える必要があるかもしれない。  
@@ -312,10 +264,9 @@ VolumeMaxの値などを変えて挙動を確かめよう。
 
 -->
 
-## マイコンと振動モータの応用事例
+## マイコンとDCモータの応用事例
 
-様々な研究などでもマイコンや振動モータは使用されている。
-また、振動モータはスマートフォンやVR装置などでも広く使われている。
+様々な研究などでもマイコンやモータは使用されている。
 持ち帰って自分でも自宅で試してみれば、きっと将来につながるだろう。
 
 ### Arduinoドローンの例
@@ -323,11 +274,11 @@ VolumeMaxの値などを変えて挙動を確かめよう。
 Arduino Drone With GPS  
 <https://www.instructables.com/Arduino-Drone-With-GPS/>
 
-### VR研究に振動モータを用いた例
+### ArduinoとDCモータによるローバー研究
 
-"Haplets: Finger-Worn Wireless and Low-Encumbrance Vibrotactile Haptic Feedback for Virtual and Augmented Reality"  
-Pornthep Preechayasomboon, Eric Rombokas, Front. Virtual Real., Volume 2, 2021  
-<https://www.frontiersin.org/articles/10.3389/frvir.2021.738613/full>
+"Implementation of Digital Image Processing Using NI myRIO and Arduino Mega 2560 as Controller On Rover Bogie Robot"  
+Arif Ainur Rafiq, Muhamad Yusuf, Pujono, Conference: 2018 International Conference on Applied Science and Technology (iCAST)  
+<https://www.researchgate.net/publication/334155810_Implementation_of_Digital_Image_Processing_Using_NI_myRIO_and_Arduino_Mega_2560_as_Controller_On_Rover_Bogie_Robot>
 
 ## 今後の学習のために
 
