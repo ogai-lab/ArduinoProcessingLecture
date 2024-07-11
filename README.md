@@ -5,12 +5,12 @@ URL: <https://github.com/ogai-lab/ArduinoProcessingLecture>
 ArduinoとProcessingを用いた講義の資料。
 過去の授業資料はpastディレクトリ以下に置く。
 
-2023年8月の東京工芸大学工学部機械コース体験型模擬授業では以下の内容を行う。
+2024年7月の東京工芸大学工学部機械コース体験型模擬授業では以下の内容を行う。
 
 - 第3回：PCとマイコンボードによるDCモータの制御
 - 概要：パソコン(PC)からの入力により、マイコンボードArduino互換機を通してDCモータを制御する方法について学びます。使用したマイコンボードやモータ、電子部品などはお持ち帰りいただけます。
 
-使用する機器の接続の様子：  
+使用する機器の接続の様子(DCモータ2個の場合)：  
 ![ArduinoDCmotor](/images/ArduinoDCmotor.jpg)
 
 ## 使用するもの
@@ -18,9 +18,9 @@ ArduinoとProcessingを用いた講義の資料。
 ### ソフトウェア
 
 - Windows 10
-- Arduino IDE 1.8.19
+- Arduino IDE
   - <https://www.arduino.cc/en/software> より無料でダウンロードできる。
-- Processing 3.5.4 for 64bit
+- Processing
   - <https://processing.org/download> より無料でダウンロードできる。
 
 ### ハードウェア
@@ -29,22 +29,21 @@ ArduinoとProcessingを用いた講義の資料。
   - Arduino互換機 1台
     - <https://ja.aliexpress.com/item/32996691557.html>
   - USBケーブル 1本
-  - DCモータ+ギア 2個
+  - DCモータ 1個
     - <https://ja.aliexpress.com/item/33021641990.html>
-  - ワニ口クリップ 6本
+  - ワニ口クリップ 4本
     - <https://ja.aliexpress.com/item/33059461046.html>
-  - ジャンパ線 11本
+  - ジャンパ線 7本
     - <https://ja.aliexpress.com/item/4000203371860.html>
-  - 抵抗内蔵5mmLED赤黄 各1個
+  - 抵抗内蔵5mmLED赤 1個
     - <https://akizukidenshi.com/catalog/g/gI-06250/>
-    - <https://akizukidenshi.com/catalog/g/gI-06253/>
   - 光センサ 1個
     - <https://amz.run/5QHd>
-  - MOSFET (IRF520) 2個
+  - MOSFET (IRF520) 1個
     - <https://ja.aliexpress.com/item/1005002567379132.html>
-  - 整流ダイオード (1N4007) 2個
+  - 整流ダイオード (1N4007) 1個
     - <https://ja.aliexpress.com/item/1005004345942815.html>
-  - 抵抗10kΩ 2本
+  - 抵抗10kΩ 1本
     - <https://amz.run/6zvj>
   - 単三電池4本用電池ボックス 1個
     - <https://amz.run/6zvi>
@@ -131,51 +130,6 @@ DCモータと電池ボックスは直接ブレッドボードに差さらない
 
 メニューから以下のサンプルプログラムを開き、書き込むとDCモータが動くはずである。こちらも数値をいろいろ変えて試してみよう。
 > ファイル -> スケッチ例 -> 01.Basics -> Fade
-
-### DCモータ2個の動作確認(時間があれば)
-
-TinkercadによるDCモータ2個の回路図  
-![Tinkercad-ArduinoDCmotor](/images/Tinkercad-Arduino2DCmotor.png)  
-<https://www.tinkercad.com/things/kiaBNcaXHyF>  
-「DCモータ1個の動作確認」で示した配線に加え、以下がつながるようにする。
-
-- DCモータ2の線1、Arduino Vin、整流ダイオード(カソード)
-- MOSFET左(ゲート)、Arduino 6番ピン、抵抗の片側
-- MOSFET中(ドレイン)、DCモータ2の線2、整流ダイオード(アノード)
-- MOSFET右(ソース)、抵抗の反対側、Arduino GND
-
-「DCモータ1個の動作確認」と同様の以下のプログラムについて、
-> ファイル -> スケッチ例 -> 01.Basics -> Fade
-
-の2箇所に追記する。
-
-1箇所目は、
-
-```Arduino
-  pinMode(led, OUTPUT);
-```
-
-を以下に変える。
-
-```Arduino
-  pinMode(led, OUTPUT);
-  pinMode(6, OUTPUT);
-```
-
-2箇所目は、
-
-```Arduino
-  analogWrite(led, brightness);
-```
-
-を以下に変える。
-
-```Arduino
-  analogWrite(led, brightness);
-  analogWrite(6, brightness);
-```
-
-このプログラムを書き込むと、2個のDCモータが動くはずである。
 
 ### 光センサの入力でDCモータを動かす(時間があれば)
 
@@ -329,15 +283,3 @@ ArduinoとMax30102でSpO2を計測する
 
 東京工芸大学PC演習室のPCのDelivery(V:)以下のV:\common\arduino_test\以下に諸々置いてある。
 学生アシスタントはその中のpreferences4t-kougei\readme.txtを読み指示に従うこと。
-
-### ProcessingのProxy設定
-
-東京工芸大学内ではProxyの設定をしないとProcessingが使用できない。以下のように学生アシスタントが設定する。
-
-1. 所定の方法でProcessingを起動し、設定を開く。
-2. 設定画面にあるpreferences.txtのパスをクリックすると、エクスプローラでpreferences.txtが入ったフォルダが開く。
-3. Processingを終了する。
-4. preferences.txtをダブルクリックし、所定の内容で編集し、保存、エディタを終了する。
-5. Processingをまた起動する。
-
-参考：蛍石製作所 processingのプロキシ設定 <https://fluorite36.hatenablog.com/entry/2018/11/09/002758>

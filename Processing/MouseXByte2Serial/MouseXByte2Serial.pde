@@ -10,7 +10,8 @@ void settings(){
 
 void setup() 
 {
-  String portName = Serial.list()[1];
+  println(Serial.list());
+  String portName = Serial.list()[0];
   myPort = new Serial(this, portName, 9600);
   background(255);
 }
