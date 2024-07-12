@@ -279,7 +279,9 @@ ArduinoとMax30102でSpO2を計測する
 
 ## 工芸大PC演習室の設定
 
-### 授業用ファイル置き場
-
-東京工芸大学PC演習室のPCのDelivery(V:)以下のV:\common\arduino_test\以下に諸々置いてある。
-学生アシスタントはその中のpreferences4t-kougei\readme.txtを読み指示に従うこと。
+1. PCに各IDでログインする。
+2. Arduino IDE, Processing, Google Chromeを起動しておく。
+3. Google Chromeで、<https://github.com/ogai-lab/ArduinoProcessingLecture>、を開いておく。
+4. Arduino互換機をあらかじめPCにUSBケーブルで接続をする。
+5. Arduino IDE上で"Arduino Uno"に接続し、必要なライブラリをインストールさせておく。
+6. 東京工芸大学PC演習室のPCのDelivery(V:)以下のV:\common\arduino_test\ArduinoProcessingLectureフォルダをローカルにコピーしておく。
