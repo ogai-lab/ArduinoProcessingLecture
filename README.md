@@ -284,4 +284,4 @@ ArduinoとMax30102でSpO2を計測する
 3. Google Chromeで、<https://github.com/ogai-lab/ArduinoProcessingLecture>、を開いておく。
 4. Arduino互換機をあらかじめPCにUSBケーブルで接続をする。
 5. Arduino IDE上で"Arduino Uno"に接続し、必要なライブラリをインストールさせておく。
-6. 東京工芸大学PC演習室のPCのDelivery(V:)以下のV:\common\arduino_test\ArduinoProcessingLectureフォルダをローカルにコピーしておく。
+6. 東京工芸大学PC演習室のPCのDelivery(V:)以下のV:\common\arduino_test\ArduinoProcessingLectureフォルダをTEMP(D:)以下ににコピーしておく。
